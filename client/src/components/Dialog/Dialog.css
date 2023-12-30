@@ -1,0 +1,90 @@
+#dialog {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #164863;
+    width: 50%;
+    height: 60%;
+    padding: 20px;
+    box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  .dialog-container {
+    text-align: left;
+  }
+  
+  
+  .hidden {
+    display: none;
+  }
+
+  #openDialog{
+    width:120%;
+    height: 8vh;
+    background-color: rgb(20, 175, 64);
+    border-color:rgb(19, 96, 197);
+    border-radius: 5px;
+    box-shadow: 5px 6px 5px black;
+    cursor: pointer;
+    margin: 2%;
+}
+
+.button-container{
+  display: flex;
+  justify-content: space-around;
+}
+
+#submit{
+  width:30%;
+  height: 30px;
+  background-color: rgb(46, 175, 24);
+  border-radius: 5px;
+  border-color: azure;
+  cursor:pointer;
+  transition: 0.5s ease-in-out;
+}
+
+#closeDialog{
+  width:30%;
+  height: 30px;
+  background-color: rgb(196, 19, 19);
+  border-radius: 5px;
+  border-color: azure;
+  cursor:pointer;
+  transition: 0.5s ease-in-out;
+}
+
+.inputscontainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:20px;
+  margin-bottom: 40px;
+}
+
+input{
+  width:60%;
+  height: 40px;
+  background-color: white;
+  color:black;
+}
+
+.selectdialog{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  gap:100px;
+}
+
+.dialogselect{
+  width:150px;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  height: 30px;
+}

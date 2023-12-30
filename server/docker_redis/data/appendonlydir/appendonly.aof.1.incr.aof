@@ -1,0 +1,188 @@
+*2
+$6
+SELECT
+$1
+0
+*3
+$3
+set
+$6
+redis2
+$192
+{
+  id: 196,
+  bookName: 'redis2',
+  authorname: 'ceylan',
+  pages: 100,
+  img_url: 'yok',
+  genre: 'makale',
+  publisher: 'makale',
+  _id: new ObjectId('658c0f827fec34eb339739ee'),
+  __v: 0
+}
+*1
+$8
+flushall
+*5
+$3
+SET
+$20
+crime and punishment
+$255
+{"_id":"6574848fba6b063b6f3d7b0d","id":1,"bookName":"crime and punishment","authorname":"Fyodor Dostoyevski","pages":704,"authorid":1,"img_url":"https://img.kitapyurdu.com/v1/getImage/fn:3846451/wh:true/wi:220","genre":"Drama","publisher":"İş Bankası"}
+$4
+PXAT
+$13
+1703703488044
+*5
+$3
+SET
+$6
+Cosmos
+$246
+{"_id":"6575d591a4a3021543f3df49","id":5,"bookName":"Cosmos","pages":384,"authorid":5,"img_url":"https://img.kitapyurdu.com/v1/getImage/fn:8635168/wh:true/wi:220","genre":"Science","publisher":"ALTIN KİTAPLAR","__v":0,"authorname":"Carl Sagan "}
+$4
+PXAT
+$13
+1703703623113
+*5
+$3
+SET
+$32
+hitchhiker's guide to the galaxy
+$273
+{"_id":"6575d64e8e80f36e034a6cc6","id":6,"bookName":"hitchhiker's guide to the galaxy","pages":248,"authorid":6,"img_url":"https://img.kitapyurdu.com/v1/getImage/fn:11708754/wh:true/wi:220","genre":"Comedy","publisher":"ALFA YAYINLARI","__v":0,"authorname":"Douglas Adams"}
+$4
+PXAT
+$13
+1703703796502
+*5
+$3
+SET
+$32
+hitchhiker's guide to the galaxy
+$273
+{"_id":"6575d64e8e80f36e034a6cc6","id":6,"bookName":"hitchhiker's guide to the galaxy","pages":248,"authorid":6,"img_url":"https://img.kitapyurdu.com/v1/getImage/fn:11708754/wh:true/wi:220","genre":"Comedy","publisher":"ALFA YAYINLARI","__v":0,"authorname":"Douglas Adams"}
+$4
+PXAT
+$13
+1703703843626
+*5
+$3
+SET
+$32
+hitchhiker's guide to the galaxy
+$273
+{"_id":"6575d64e8e80f36e034a6cc6","id":6,"bookName":"hitchhiker's guide to the galaxy","pages":248,"authorid":6,"img_url":"https://img.kitapyurdu.com/v1/getImage/fn:11708754/wh:true/wi:220","genre":"Comedy","publisher":"ALFA YAYINLARI","__v":0,"authorname":"Douglas Adams"}
+$4
+PXAT
+$13
+1703703845091
+*5
+$3
+SET
+$32
+hitchhiker's guide to the galaxy
+$273
+{"_id":"6575d64e8e80f36e034a6cc6","id":6,"bookName":"hitchhiker's guide to the galaxy","pages":248,"authorid":6,"img_url":"https://img.kitapyurdu.com/v1/getImage/fn:11708754/wh:true/wi:220","genre":"Comedy","publisher":"ALFA YAYINLARI","__v":0,"authorname":"Douglas Adams"}
+$4
+PXAT
+$13
+1703703846324
+*5
+$3
+SET
+$32
+hitchhiker's guide to the galaxy
+$273
+{"_id":"6575d64e8e80f36e034a6cc6","id":6,"bookName":"hitchhiker's guide to the galaxy","pages":248,"authorid":6,"img_url":"https://img.kitapyurdu.com/v1/getImage/fn:11708754/wh:true/wi:220","genre":"Comedy","publisher":"ALFA YAYINLARI","__v":0,"authorname":"Douglas Adams"}
+$4
+PXAT
+$13
+1703703847530
+*5
+$3
+SET
+$32
+hitchhiker's guide to the galaxy
+$273
+{"_id":"6575d64e8e80f36e034a6cc6","id":6,"bookName":"hitchhiker's guide to the galaxy","pages":248,"authorid":6,"img_url":"https://img.kitapyurdu.com/v1/getImage/fn:11708754/wh:true/wi:220","genre":"Comedy","publisher":"ALFA YAYINLARI","__v":0,"authorname":"Douglas Adams"}
+$4
+PXAT
+$13
+1703703849177
+*5
+$3
+SET
+$32
+hitchhiker's guide to the galaxy
+$273
+{"_id":"6575d64e8e80f36e034a6cc6","id":6,"bookName":"hitchhiker's guide to the galaxy","pages":248,"authorid":6,"img_url":"https://img.kitapyurdu.com/v1/getImage/fn:11708754/wh:true/wi:220","genre":"Comedy","publisher":"ALFA YAYINLARI","__v":0,"authorname":"Douglas Adams"}
+$4
+PXAT
+$13
+1703703850616
+*5
+$3
+SET
+$32
+hitchhiker's guide to the galaxy
+$273
+{"_id":"6575d64e8e80f36e034a6cc6","id":6,"bookName":"hitchhiker's guide to the galaxy","pages":248,"authorid":6,"img_url":"https://img.kitapyurdu.com/v1/getImage/fn:11708754/wh:true/wi:220","genre":"Comedy","publisher":"ALFA YAYINLARI","__v":0,"authorname":"Douglas Adams"}
+$4
+PXAT
+$13
+1703703852277
+*2
+$3
+DEL
+$20
+crime and punishment
+*2
+$3
+DEL
+$6
+Cosmos
+*2
+$3
+DEL
+$32
+hitchhiker's guide to the galaxy
+*2
+$6
+SELECT
+$1
+0
+*5
+$3
+SET
+$20
+CRIME AND PUNISHMENT
+$255
+{"_id":"6574848fba6b063b6f3d7b0d","id":1,"bookName":"CRIME AND PUNISHMENT","authorname":"Fyodor Dostoyevski","pages":704,"authorid":1,"img_url":"https://img.kitapyurdu.com/v1/getImage/fn:3846451/wh:true/wi:220","genre":"Drama","publisher":"İş Bankası"}
+$4
+PXAT
+$13
+1703960286157
+*5
+$3
+SET
+$7
+SAPIENS
+$249
+{"_id":"6574848fba6b063b6f3d7b0f","id":3,"bookName":"SAPIENS","authorname":"Yuval Noah Harari ","pages":412,"authorid":3,"img_url":"https://img.kitapyurdu.com/v1/getImage/fn:1459987/wh:true/wi:220","genre":"Evolution","publisher":"KOLEKTİF KİTAP"}
+$4
+PXAT
+$13
+1703960315345
+*5
+$3
+SET
+$7
+TO LIVE
+$239
+{"_id":"6575d4299461ca49448c9597","id":4,"bookName":"TO LIVE","pages":210,"authorid":4,"img_url":"https://img.kitapyurdu.com/v1/getImage/fn:1177782/wh:true/wi:220","genre":"Drama","publisher":"JAGUAR KİTAP","__v":0,"authorname":"Yu Hua "}
+$4
+PXAT
+$13
+1703960386626

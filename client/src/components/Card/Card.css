@@ -1,0 +1,96 @@
+.cards {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-around;
+    height: max-content; 
+   background-color: transparent;
+  }
+  
+  .card {
+    position: relative;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    gap:20px;
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+    padding: .5rem;
+    text-align: center;
+    background-color: #7ba7be;
+    width: 43%;
+    height: 25vh;
+    margin: 1rem;
+    color: black;
+    box-shadow: 8px 8px 5px rgb(24, 22, 22);
+    transition: .5s ease;
+    -webkit-transition: .5s ease;
+    -moz-transition: .5s ease;
+    -ms-transition: .5s ease;
+    -o-transition: .5s ease;
+    cursor: pointer;
+}
+
+.card:hover{
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+}
+
+.information{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    word-break: break-all;
+    line-height: 200%;
+    width:60%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    color:white;
+    font-size: 1.1vw;
+    font-family: 'Libre Baskerville', serif;
+    padding: 10px 0; 
+}
+
+.img_url{
+    position: relative;
+    height: 100%;
+    width:35%;
+}
+.img{
+    object-fit: contain;
+    height: 100%;
+    width:100%;
+}
+
+.book{
+    display: flex;
+    justify-content: space-between;
+}
+
+.heding{
+    color: black;
+    font-size: 1.4vw;
+}
+
+.removee{
+    color:black;
+    width:8%;
+    aspect-ratio: 16/10;
+    position: absolute;
+    top:0;
+    right:0;
+    z-index: 1;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.removee:hover{
+    background-color:red;
+}
+  

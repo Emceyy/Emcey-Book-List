@@ -1,0 +1,15 @@
+version: '3'
+services:
+  client:
+    build: ./client
+    ports:
+      - "5737:5737"
+    depends_on:
+      - server
+  server:
+    build: ./server
+    ports:
+      - "3636:3636"
+networks:
+  app-network:
+    driver: bridge
