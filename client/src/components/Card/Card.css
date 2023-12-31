@@ -91,6 +91,7 @@
 }
 
 .removee:hover{
-    background-color:red;
+    background-color:rgb(187, 33, 33);
+    color:white;
 }
   
