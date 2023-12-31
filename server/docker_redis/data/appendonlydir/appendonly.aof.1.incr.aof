@@ -186,3 +186,34 @@ $4
 PXAT
 $13
 1703960386626
+*2
+$6
+SELECT
+$1
+0
+*2
+$3
+DEL
+$7
+SAPIENS
+*2
+$3
+DEL
+$20
+CRIME AND PUNISHMENT
+*2
+$3
+DEL
+$7
+TO LIVE
+*5
+$3
+SET
+$20
+CRIME AND PUNISHMENT
+$255
+{"_id":"6574848fba6b063b6f3d7b0d","id":1,"bookName":"CRIME AND PUNISHMENT","authorname":"Fyodor Dostoyevski","pages":704,"authorid":1,"img_url":"https://img.kitapyurdu.com/v1/getImage/fn:3846451/wh:true/wi:220","genre":"Drama","publisher":"İş Bankası"}
+$4
+PXAT
+$13
+1704015195448
