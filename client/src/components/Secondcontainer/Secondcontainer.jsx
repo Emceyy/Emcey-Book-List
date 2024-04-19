@@ -3,7 +3,7 @@ import './Secondcontainer.css';
 import { memo } from "react";
 import GetBook from '.././GetBook/GetBook';
 import Dialog from "../Dialog/Dialog";
-
+import User from "../User/User";
 function Secondcontainer(){
 
   const [getbook, setgetbook] = useState(0);
@@ -102,6 +102,7 @@ const getallbooks = () => {
           <div className='dialog'>
           <Dialog />
           </div>
+            <User/>
         </div>
         <GetBook
           getbook={getbook}
