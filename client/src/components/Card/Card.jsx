@@ -1,31 +1,101 @@
 import './Card.css';
+import { useState, useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
-import { memo } from "react";
 import { useMutation } from '@apollo/client';
-import { DELETE_BOOK } from "../../GraphQL/Mutations"
-import { LOAD_BOOKS } from "../../GraphQL/Queries";
- const Card = ( { data, querie } ) => {
+import { ADD_BOOK_LIST, DELETE_BOOK_LIST, DELETE_BOOK } from "../../GraphQL/Mutations"
+import { LOAD_USER, LOAD_BOOKS} from "../../GraphQL/Queries";
+const adminEmail = import.meta.env.VITE_ADMIN_EMAIL;
+const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
 
-  const [deleteBook] = useMutation(DELETE_BOOK,{
 
+ const Card = ( { data, querie, isLoggedIn, user, getuserbooks, bookDataList} ) => {
+
+  const [addBookList] = useMutation(ADD_BOOK_LIST,{
     refetchQueries: [
-      { query: LOAD_BOOKS },
+      { query: LOAD_USER, variables: { Email: getuserbooks.Email,
+         Password: getuserbooks.Password}},
+    ],
+  });
+
+  const [deleteBookList] = useMutation(DELETE_BOOK_LIST,{
+    refetchQueries: [
+      { query: LOAD_USER, variables: { Email: getuserbooks.Email,
+         Password: getuserbooks.Password}},
+    ],
+  });
+
+  const [DeleteBook] = useMutation(DELETE_BOOK,{
+    refetchQueries: [
+      { query: LOAD_BOOKS}
     ],
   });
 
 
+
+  const [ids, setIds] = useState([]);
+
+
+  useEffect(() => {
+    if (bookDataList) { 
+      const bookIds = bookDataList.map((book) => book.id); setIds(bookIds); }
+
+    if (data && data.getAllBooks && getuserbooks.Email == adminEmail && getuserbooks.Password == adminPassword)
+       {
+      const adminids = data.getAllBooks.map((book) => book.id);
+      setIds(adminids);
+    }
+    if (bookDataList && getuserbooks && getuserbooks.Email ==! adminEmail && getuserbooks.Password ===! adminPassword) {
+      const bookIds = bookDataList.map(book => book.id);
+      setIds(bookIds);
+     
+    }
+  }, [data, bookDataList]);
+
+
+  
+
     let method = "";
 
-    const remove = async (id) => {
-      try {
-        const response = await deleteBook({
-          variables: {
-            id: id,
-          },
-        });
-        console.log(response);
-      } catch (err) {
-        console.error(err);
+    const addOrDeleteBook = async (id, bookName) => {
+      if(isLoggedIn){
+        if(data && data.getAllBooks && getuserbooks.Email == adminEmail && getuserbooks.Password == adminPassword){
+          try {
+            await DeleteBook({
+              variables: {
+                id: parseInt(id),
+              },
+            });
+          } catch (err) {
+            console.error(err);
+          }
+        }
+        if (ids.includes(id)) {
+          setIds((pre) => pre.filter((previd) => previd !== id))
+          try {
+            await deleteBookList({
+              variables: {
+                id: user,
+                 bookname: bookName,
+              },
+            });
+          } catch (err) {
+            console.error(err);
+          }
+        } else {
+          setIds((pre) => [...pre, id]);
+          try {
+            await addBookList({
+              variables: {
+                id: user,
+                bookname: bookName,
+              },
+            });
+          } catch (err) {
+            console.error(err);
+          }
+        }
+      }else{
+        alert("please login")
       }
     };
    
@@ -46,7 +116,9 @@ import { LOAD_BOOKS } from "../../GraphQL/Queries";
                 <img alt="img" draggable="false" key={val.id} src={val.img_url} className="img"></img>
               </div>
               <div className="information">
-              <div className='removee' key={val.id} onClick={() => remove(val.id)}>X</div>
+              <div className='removee' key={val.id} onClick={() => addOrDeleteBook(val.id, val.bookName)}>
+  {ids.includes(val.id) ? "X" : "✔"}
+</div>
               <div className="book">
               <div className="heding">
               Book Name:
@@ -103,7 +175,9 @@ import { LOAD_BOOKS } from "../../GraphQL/Queries";
                 <img alt="img"  draggable="false" key={val.id} src={val.img_url} className="img"></img>
               </div>
               <div className="information">
-              <div className='removee' key={val.id} onClick={() => remove(val.id)}>X</div>
+              <div className='removee' key={val.id} onClick={() => addOrDeleteBook(val.id, val.bookName)}>
+  {ids.includes(val.id) ? "X" : "✔"}
+</div>
               <div className="book">
               <div className="heding">
               Book Name:
@@ -160,7 +234,9 @@ import { LOAD_BOOKS } from "../../GraphQL/Queries";
                   <img alt="img"  draggable="false" key={val.id} src={val.img_url} className="img"></img>
                 </div>
                 <div className="information">
-                <div className='removee' key={val.id} onClick={() => remove(val.id)}>X</div>
+                <div className='removee' key={val.id} onClick={() => addOrDeleteBook(val.id, val.bookName)}>
+  {ids.includes(val.id) ? "X" : "✔"}
+</div>
                 <div className="book">
                 <div className="heding">
                 Book Name:
@@ -213,4 +289,8 @@ export default memo(Card);
 Card.propTypes = {
     data: PropTypes.any.isRequired,
     querie: PropTypes.any.isRequired,
+    isLoggedIn: PropTypes.bool,
+    user: PropTypes.any.isRequired,
+    getuserbooks: PropTypes.any.isRequired,
+    bookDataList: PropTypes.any.isRequired,
   };

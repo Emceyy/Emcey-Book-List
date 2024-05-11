@@ -80,7 +80,7 @@ import './Dialog.css';
    };
     
   return (
-    <div className='searchandoptions'>
+    <div className='maindialog'>
     <button id="openDialog">Add New Book</button> 
     <div id="dialog" className="hidden">         
     <div className="dialog-container">

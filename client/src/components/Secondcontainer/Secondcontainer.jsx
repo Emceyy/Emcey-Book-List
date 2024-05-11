@@ -1,8 +1,6 @@
 import { useState} from 'react';
 import './Secondcontainer.css';
-import { memo } from "react";
 import GetBook from '.././GetBook/GetBook';
-import Dialog from "../Dialog/Dialog";
 import User from "../User/User";
 function Secondcontainer(){
 
@@ -17,10 +15,24 @@ function Secondcontainer(){
     setsearch(e.target.value);
   };
 
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setuser] = useState();
+
+
+  const [userinformation, setuserinformation] = useState({
+    Email:"",
+    Password:"",
+  });
+
+
+  const handleLoginChange = (status) => {
+    setIsLoggedIn(status);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setvalue(search.toLocaleUpperCase())
-    console.log(search.toLocaleUpperCase())
     setgetbook(5);
     setsearch("");
   };
@@ -48,11 +60,19 @@ function Secondcontainer(){
 
 
 const getallbooks = () => {
-  setgetbook(1);
+  setgetbook((prevalue) => (prevalue === 0 ? 1 : 0));
   setPublisher(0);
   setAuthor(0);
   setGenre(0);
 };
+
+const getuserbooks = () => {
+  setgetbook(6);
+  setPublisher(0);
+  setAuthor(0);
+  setGenre(0);
+}
+
 
   return (
     <div className='secondconatiner'>
@@ -98,24 +118,27 @@ const getallbooks = () => {
             <option value="Carl Sagan">Carl Sagan</option>
             <option value="Douglas Adams">Douglas Adams</option>
           </select>
-          <button className="mybooklist" onClick={getallbooks}>My Book List</button> 
-          <div className='dialog'>
-          <Dialog />
-          </div>
-            <User/>
+          <button className="mybooklist" onClick={getallbooks}>All Books</button> 
+          { isLoggedIn ?  <button className="mybooklist" onClick={getuserbooks}>My Book List</button> : null}
+            <User onLoginChange={handleLoginChange} isLoggedInValue={isLoggedIn} setuserinfo={setuserinformation}
+            setuser={setuser}
+            />
         </div>
         <GetBook
+          isLoggedIn={isLoggedIn}
+          user={user}
           getbook={getbook}
           getpublisher={publisher}
           getgenre={genre}
           getauthor={author}
           getbookname={value}
+          getuserbooks={userinformation}
          />
       </div>
   )
 }
 
-export default memo(Secondcontainer)
+export default Secondcontainer
 
 
 

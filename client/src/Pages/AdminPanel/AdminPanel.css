@@ -1,0 +1,29 @@
+.admincontainer{
+  min-height: 100vh;
+    width:100vw;
+    background-color: #5AB2FF;
+}
+
+.admin-buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 15vh;
+  }
+
+  .book-user {
+    width:10%;
+    height: 8vh;
+    background-color: rgb(20, 175, 64);
+    border-color: rgb(14, 14, 14);
+    border-radius: 5px;
+    box-shadow: 5px 6px 5px black;
+    cursor: pointer;
+    margin: 2%;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .book-user:hover {
+    transform: scale(1.2);
+  }

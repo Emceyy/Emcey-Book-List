@@ -78,3 +78,33 @@ export const LOAD_BOOKS_BY_BookName = gql`
     }
   }
 `;
+
+export const LOAD_USERS = gql`
+  query {
+    getAllUsers {
+    id
+    UserName
+    Password
+    Email
+    UserList
+    }
+  }
+`;
+
+export const LOAD_USER = gql`
+  query 
+  ($Email: String!,
+  $Password: String!
+  ) {
+    getUser(
+      Email: $Email,
+      Password: $Password
+    ) {
+      id
+      UserName
+      Password
+      Email
+      UserList
+    }
+  }
+`;

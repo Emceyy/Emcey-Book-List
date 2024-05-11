@@ -1,0 +1,40 @@
+.user-info-card-container {
+    min-height: max-content;
+    margin: 2% 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .usercard {
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    border: 1px solid #020202;
+    box-shadow: 5px 5px 5px black;
+    background-color:#0E46A3 ;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 16px;
+    width: 31%;
+  }
+
+  .usercard-content {
+    font-size: 1.3vw;
+    margin-bottom: 8px;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5em;
+    color: #e30d0d;
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    color: #b84949;
+  }
