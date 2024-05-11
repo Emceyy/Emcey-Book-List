@@ -21,11 +21,22 @@ const authorSchema = new mongoose.Schema({
     genre: String,
     publisher: String,
   });
+
+  const userschema = new mongoose.Schema({
+    id: Number,
+    UserName: String,
+    Password: String,
+    Email: String,
+    UserList: [String],
+  });
   
   const Author = mongoose.model("Author", authorSchema, "Authors");
 
 
   const Book = mongoose.model("Book", bookSchema, "Books");
+
+
+  const User = mongoose.model("User", userschema, "Users");
   
   
-  module.exports = { Author, Book };
+  module.exports = { Author, Book, User };

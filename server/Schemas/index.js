@@ -6,15 +6,7 @@ const {
   GraphQLString,
   GraphQLList,
 } = graphql;
-const { Author, Book } = require("../data")
-const Redis = require('ioredis');
-
-const redis = new Redis({
-  host: "localhost",
-  port: 6379,
-  db: 0
-});
-
+const { Author, Book, User } = require("../data")
 
 const randomId = () => {
   const randomNumber = Math.random() * 1000;
@@ -25,6 +17,7 @@ const randomId = () => {
 
 const AuthorType = require("./TypeDefs/AuthorType.js");
 const BookType = require("./TypeDefs/BookType.js");
+const UserType = require("./TypeDefs/UserType.js");
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -62,24 +55,17 @@ const RootQuery = new GraphQLObjectType({
       type: BookType,
       args: { BookName: { type: GraphQLString } },
       resolve: async (parent, args) => {
-            try {
-          const cachedBook = await redis.get(args.BookName);
-          if (cachedBook) {
-            return JSON.parse(cachedBook);
+          try {
+            const book = await Book.findOne({ bookName: args.BookName }).lean();
+            if (book) {
+              return book;
+            }
+            throw new Error('Book not found');
+          } catch (error) {
+            console.error('Error in getBookByName resolver:', error);
+            throw new Error('Error in getBookByName resolver');
           }
-    
-          const book = await Book.findOne({ bookName: args.BookName }).lean();
-          if (book) {
-            await redis.setex(args.BookName, 600, JSON.stringify(book));
-            return book;
-          }
-    
-          throw new Error('Book not found');
-        } catch (error) {
-          console.error('Error in getBookByName resolver:', error);
-          throw new Error('Error in getBookByName resolver');
-        }
-      }
+      },
     },
     
       getAllBooks: {
@@ -118,6 +104,37 @@ const RootQuery = new GraphQLObjectType({
         resolve: async (parent, args) => {
           return await Book.find({ publisher: args.publisher }).lean();
         },
+      },
+      getAllUsers: {
+        type: new GraphQLList(UserType),
+        resolve: async (parent, args) => { 
+          try {
+            const users = await User.find({}).lean(); //lean ile plain text olarak veri çekiyoruz, böylece mongonun gereksiz ekstra özellikleri gelmiyor.
+            return users;
+          } catch (err) {
+            console.error(err);
+          }
+        },
+      },
+      getUser: {
+        type: UserType,
+        args: {
+           Password: { type: GraphQLString },
+            Email: { type: GraphQLString },
+      },
+        resolve: async (parent, args) => {
+            try{
+            const user = await User.findOne({ Password: args.Password, Email: args.Email }).lean();
+            if (user) {
+              return user;
+            }
+      
+            throw new Error('User not found');
+          } catch (error) {
+            console.error('Error in getUser resolver:', error);
+            throw new Error('Error in getUser resolver');
+          }
+        }
       },
   },
 });
@@ -180,6 +197,88 @@ const Mutation = new GraphQLObjectType({
            console.error(err); 
         }
        },
+    },
+
+      AddUser: {
+      type: UserType,
+      args: {
+        UserName: { type: GraphQLString },
+        Password: { type: GraphQLString },
+        Email: { type: GraphQLString },
+        UserList: { type: GraphQLList(GraphQLString)},
+      },
+      resolve: async (parent, args) => { 
+        try {
+           const user = await User.create({
+            id: randomId(),
+            UserName: args.UserName,
+            Password: args.Password, 
+            Email: args.Email,
+            UserList: args.UserList,
+           }); 
+           return user; 
+        } catch (err) {
+           console.error(err); 
+        }
+       },
+    },
+
+    DeleteBookList:{
+      type: UserType,
+      args: {
+        id: { type: GraphQLInt },
+        bookname: { type: GraphQLString }
+      },
+      resolve: async (parent, args) => {
+        try {
+          const user = await User.findOne({id: args.id});
+          if (!user) {
+            console.error('User not found:', args.id);
+            throw new Error('User not found');
+          }
+          user.UserList = user.UserList.filter(book => book !== args.bookname);
+          await user.save();
+          console.log('Book deleted successfully');
+          return user;
+        } catch (err) {
+          console.error('Error deleting book:', err);
+          throw err;
+        }
+      }
+  },
+
+  AddBookList:{
+    type: UserType,
+    args: {
+      id: { type: GraphQLInt },
+      bookname: { type: GraphQLString }
+    },
+    resolve: async (parent, args) => {
+      try{
+        const user = await User.findOne({id: args.id});
+        const book = args.bookname.toUpperCase();
+        if(!user || !book){
+          throw new Error("user not found");
+        }
+        user.UserList.push(book);
+        await user.save();
+        return user;
+      } catch(err){
+        console.log(err);
+      }
+      
+  }
+},
+
+    DeleteUser: {
+      type: UserType,
+      args: {
+        id: { type: GraphQLInt }
+      },
+      resolve (parent, args) {
+        
+        return User.findOneAndDelete({id: args.id});
+      }
     },
 
   },
