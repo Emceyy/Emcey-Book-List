@@ -22,7 +22,7 @@ export default function Home() {
     <div className='maincontainer'>
       <div className='bookscontainer'>
       <div className='textcontainer emcey'style={{ transform: `translateX(${-parallaxValueY}px)` }}>
-        EMCEY 
+        ESA 
       </div>
       <div className='textcontainer booklist'style={{ transform: `translateX(${parallaxValueY}px)` }}>
        BOOK LİST 

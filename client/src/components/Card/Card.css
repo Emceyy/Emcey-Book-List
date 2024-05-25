@@ -16,12 +16,12 @@
     border-radius: 4px;
     padding: .5rem;
     text-align: center;
-    background-color: #7ba7be;
+    background-color: #dad7d7;
     width: 43%;
     height: 25vh;
     margin: 1rem;
     color: black;
-    box-shadow: 8px 8px 5px rgb(24, 22, 22);
+    box-shadow: 8px 8px 5px rgba(24, 22, 22, 0.382);
     transition: .5s ease;
     -webkit-transition: .5s ease;
     -moz-transition: .5s ease;
@@ -48,7 +48,7 @@
     height: 100%;
     flex-direction: column;
     justify-content: center;
-    color:white;
+    color:#303030;
     font-size: 1.1vw;
     font-family: 'Libre Baskerville', serif;
     padding: 10px 0; 
