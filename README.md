@@ -42,7 +42,7 @@ Feel free to replace the placeholders with actual information relevant to your p
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
   <img src="https://github.com/Emceyy/Emcey-Book-List/blob/master/client/pictures/emceybook.png?raw=true" alt="Emcey Book" width="400">
-  <img src="https://github.com/Emceyy/Emcey-Book-List/blob/master/client/pictures/books.png?raw=true" alt="Books" width="400">
-  <img src="https://github.com/Emceyy/Emcey-Book-List/blob/master/client/pictures/users.png?raw=true" alt="Users" width="400">
-  <img src="https://github.com/Emceyy/Emcey-Book-List/blob/master/client/pictures/newbook.png?raw=true" alt="New Book" width="400">
+  <img src="https://github.com/Emceyy/Emcey-Book-List/blob/master/client/pictures/mainpagebooks.png?raw=true" alt="Books" width="400">
+  <img src="https://github.com/Emceyy/Emcey-Book-List/blob/master/client/pictures/adminusers.png?raw=true" alt="Users" width="400">
+  <img src="https://github.com/Emceyy/Emcey-Book-List/blob/master/client/pictures/adminpanel.png?raw=true" alt="New Book" width="400">
 </div>
